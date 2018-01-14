@@ -11,10 +11,15 @@
     <script src="js/main.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#flipbook").turn({
-                width: 800,
-                height: 600,
-                autoCenter: true
+            $flipbook = $('#flipbook');
+            $flipbook.turn();
+            $flipbook.bind('turning', function (event, page, pageObj) {
+                if (page == 2) {
+                    console.log("01");
+                    $flipbook.css({
+                        "margin-left": '0px'
+                    });
+                }
             });
         });
     </script>
@@ -30,29 +35,40 @@
             height: 100%;
         }
 
-        #flipbook {
-            position: relative;
-            top: 10%;
-            left: auto;
-            right: auto;
+        .mainContainer {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        #flipbook .page {
+        .flipbook {
+            width: 60%;
+            height: 80%;
+            margin-left: -30%;
+        }
+
+        .flipbook .page {
             background-image: url("img/5-13050GT458.png");
         }
     </style>
 </head>
 
 <body>
-    <div id="flipbook">
-        <div class="hard"> Turn.js </div>
-        <div class="hard"></div>
-        <div class="page"> Page 1 </div>
-        <div class="page"> Page 2 </div>
-        <div class="page"> Page 3 </div>
-        <div class="page"> Page 4 </div>
-        <div class="hard"></div>
-        <div class="hard"></div>
+    <div class="mainContainer">
+        <div id="flipbook" class="flipbook">
+            <div> Turn.js </div>
+            <div></div>
+            <div> Page 1 </div>
+            <div> Page 2 </div>
+            <div> Page 3 </div>
+            <div> Page 4 </div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
 </body>
 
