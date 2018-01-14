@@ -15,9 +15,12 @@
             $flipbook.turn();
             $flipbook.bind('turning', function (event, page, pageObj) {
                 if (page == 2) {
-                    console.log("01");
                     $flipbook.css({
                         "margin-left": '0px'
+                    });
+                } else if (page == 1) {
+                    $flipbook.css({
+                        "margin-left": '-30%'
                     });
                 }
             });
@@ -27,6 +30,7 @@
         * {
             margin: 0px;
             padding: 0px;
+            box-sizing: border-box;
         }
 
         body {
@@ -43,16 +47,31 @@
             display: -webkit-flex;
             justify-content: center;
             align-items: center;
+            background-image: url("img/5-120601094P3-50.gif");
+        }
+
+        .flipbook .shadow {
+            -webkit-box-shadow: 0 4px 10px #666;
+            -moz-box-shadow: 0 4px 10px #666;
+            -ms-box-shadow: 0 4px 10px #666;
+            -o-box-shadow: 0 4px 10px #666;
+            box-shadow: 0 4px 10px #666;
         }
 
         .flipbook {
             width: 60%;
             height: 80%;
             margin-left: -30%;
+            margin-top: -5%;
         }
 
         .flipbook .page {
-            background-image: url("img/5-13050GT458.png");
+            background-color: aliceblue;
+        }
+
+        .flipbook .page.p1 {
+            background-image: url("img/warmness.png");
+            background-size: 100% 100%;
         }
     </style>
 </head>
@@ -60,7 +79,7 @@
 <body>
     <div class="mainContainer">
         <div id="flipbook" class="flipbook">
-            <div> Turn.js </div>
+            <div></div>
             <div></div>
             <div> Page 1 </div>
             <div> Page 2 </div>
