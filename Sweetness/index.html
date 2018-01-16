@@ -11,16 +11,36 @@
     <script src="js/main.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $mainContainer = $('.mainContainer');
             $flipbook = $('#flipbook');
-            $flipbook.turn();
+            if ($mainContainer.width() > $mainContainer.height()) {
+                $flipbook.css({
+                    'width': '60%',
+                    'height': '80%',
+                    'margin-left': '-30%'
+                });
+                $flipbook.turn({
+                    display: 'double'
+                });
+                console.log($flipbook.width()+'px');
+                console.log(-$flipbook.width()/2 + 'px');
+            } else if ($mainContainer.width() < $mainContainer.height()) {
+                $flipbook.css({
+                    'width': '100%',
+                    'height': '100%'
+                });
+                $flipbook.turn({
+                    display: 'single'
+                });
+            }
             $flipbook.bind('turning', function (event, page, pageObj) {
                 if (page == 2) {
                     $flipbook.css({
-                        "margin-left": '0px'
+                        'margin-left': '0px'
                     });
                 } else if (page == 1) {
                     $flipbook.css({
-                        "margin-left": '-30%'
+                        'margin-left': '-30%'
                     });
                 }
             });
@@ -47,7 +67,7 @@
             display: -webkit-flex;
             justify-content: center;
             align-items: center;
-            background-image: url("img/5-120601094P3-50.gif");
+            background-image: url("img/background/5-120601094P3-50.gif");
         }
 
         .flipbook .shadow {
@@ -58,19 +78,12 @@
             box-shadow: 0 4px 10px #666;
         }
 
-        .flipbook {
-            width: 60%;
-            height: 80%;
-            margin-left: -30%;
-            margin-top: -5%;
-        }
-
         .flipbook .page {
             background-color: aliceblue;
         }
 
         .flipbook .page.p1 {
-            background-image: url("img/Poster Gellary.jpg");
+            background-image: url("img/cover/Poster Gellary.jpg");
             background-size: 100% 100%;
         }
     </style>
