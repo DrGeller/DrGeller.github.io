@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>One Gift To One Heart</title>
+  <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
+  <link href="./animation/animation.css" rel="stylesheet">
   <style type="text/css">
     * {
       margin: 0px;
@@ -22,19 +25,181 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: brown;
+      background-color: #f0f0f0;
+    }
+
+    .stage01, .stage02, stage03 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      left: 50%;
+      top: 30%;
+      margin-left: -75px;
+      margin-top: -75px;
+      background: #f00;
+      filter: drop-shadow(0px 0px 20px rgb(255, 20, 20));
+      transform: rotate(45deg);
+      display: none;
+    }
+
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: #f00;
+      border-radius: 75px;
+    }
+
+    .heart:before {
+      left: -75px;
+    }
+
+    .heart:after {
+      left: 0;
+      top: -75px;
+    }
+
+    .stage01 .textContainer {
+      position: absolute;
+      width: 300px;
+      height: 100px;
+      left: 50%;
+      top: 30%;
+      margin-left: -150px;
+      margin-top: -50px;
+      text-align: center;
+      display: none;
+    }
+
+    .stage01 .textNode {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .stage01 .star {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      left: 50%;
+      top: 25%;
+      margin-left: -110px;
+      margin-top: -100px;
+      background-image: url("./img/star.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      animation-duration: 0.3s;
+      display: none;
+    }
+
+    .stage01 .text {
+      position: relative;
+      width: 300px;
+      height: 30px;
+      margin: auto;
+      margin-bottom: 10px;
+      top: 45%;
+      text-align: center;
+      line-height: 30px;
+      vertical-align: middle;
+      color: #7c7c7c;
+      display: none;
+    }
+
+    .stage01 .text span {
+      font-size: 20px;
+      color: #bf0f0f;
+    }
+
+    .logo {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      left: 50%;
+      bottom: 30px;
+      margin-left: -20px;
+      background-image: url(./img/dog.png);
+      background-size: 100% 100%;
+      animation-delay: 2s;
     }
   </style>
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
   <script type="text/javascript">
-    $(document).ready(function() {
-      alert("hello");
+    $(document).ready(function () {
+      var $mainContainer = $(".mainContainer");
+      var $textContainer = $(".textContainer");
+      var $heart = $(".heart");
+      var $star = $(".star");
+      var $stage01Text = $(".stage01 .text");
+      var $logo = $(".logo");
+
+      function startAnimation(animationName, speed, ) {
+        $heart.css("animation", animationName + " " + speed + " " + "infinite");
+      }
+
+      //Stage 01
+      $star.fadeIn(800);
+      $stage01Text.eq(0).delay(300).fadeIn(800).css("font-size", "22px");
+      $star.delay(700).animate({top: "-200"}, 800);
+      $stage01Text.eq(0).delay(700).animate({top: 80}, 600, function() {
+        $stage01Text.eq(1).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+          $stage01Text.eq(2).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+            $stage01Text.eq(3).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+              $stage01Text.eq(4).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+                $stage01Text.eq(5).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+                  $stage01Text.eq(6).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+                    $stage01Text.eq(7).css({"font-size":"14px","top":"150px"}).fadeIn(800, function() {
+                      $logo.addClass("animated tada infinite");
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+      $logo.bind("click", function() {
+        $logo.removeClass("animated tada infinite");
+        $stage01Text.fadeOut(800, function() {
+          $heart.fadeIn(800);
+        });
+      })
+      //Stage 02
+      
     })
   </script>
 </head>
+
 <body>
   <div class="mainContainer">
-
+    <div class="stage01">
+      <div class="star"></div>
+      <div class="text">One Gift To One Heart</div>
+      <div class="text">世上有<span>一只</span>美丽的小星星</div>
+      <div class="text">璀璨又夺目</div>
+      <div class="text">在夜空中闪耀群星</div>
+      <div class="text">有时如太阳般火热</div>
+      <div class="text">有时像月亮般纯洁</div>
+      <div class="text">往来之间皆优雅</div>
+      <div class="text">...</div>
+    </div>
+    <div class="stag02">
+      <div class="heart"></div>
+    </div>
+    <div class="logo"></div>
   </div>
 </body>
+
 </html>
