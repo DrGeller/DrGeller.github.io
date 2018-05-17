@@ -47,6 +47,8 @@
       background: #f00;
       transform: rotate(45deg);
       display: none;
+      animation: heartbeatIn 1s 2s infinite;
+      -webkit-animation: heartbeatIn 1s 2.8s infinite;
     }
 
     .heart:before, .heart:after {
@@ -264,7 +266,7 @@
           setTimeout(function() {
             $heart.css("filter", "drop-shadow(0px 0px 20px rgb(255, 20, 20))");
           }, 2000);
-          startAnimation("heartbeatIn", "1s", "2s", "infinite");
+          //startAnimation("heartbeatIn", "1s", "2s", "infinite");
           setTimeout(function() {
             $heart.css("animation-play-state", "paused");
             $heart.delay(400).fadeOut(800, function() {
