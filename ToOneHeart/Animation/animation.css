@@ -2,14 +2,17 @@
 @keyframes heartbeatIn {
     0% {
         transform: rotate(45deg) scale(0.8, 0.8);
+        -webkit-transform: rotate(45deg) scale(0.8, 0.8);
         opacity: 1;
     }
     25% {
         transform: rotate(45deg) scale(1, 1);
+        -webkit-transform: rotate(45deg) scale(1, 1);
         opacity: 0.8;
     }
     100% {
         transform: rotate(45deg) scale(0.8, 0.8);
+        -webkit-transform: rotate(45deg) scale(0.8, 0.8);
         opacity: 1;
     }
 }
