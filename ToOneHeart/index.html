@@ -215,6 +215,9 @@
 
       function startAnimation(animationName, speed, delay, type) {
         $heart.css("-webkit-animation", animationName + " " + speed + " " + delay + " " + type);
+        $heart.css("animation", animationName + " " + speed + " " + delay + " " + type);
+        $heart.css("-moz-animation", animationName + " " + speed + " " + delay + " " + type);
+        $heart.css("-o-animation", animationName + " " + speed + " " + delay + " " + type);
       }
 
       var randomInt, temp;
