@@ -1,5 +1,5 @@
 /*动画脚本*/
-@keyframes heartbeatIn {
+@-webkit-keyframes heartbeatIn {
     0% {
         transform: rotate(45deg) scale(0.8, 0.8);
         -webkit-transform: rotate(45deg) scale(0.8, 0.8);
