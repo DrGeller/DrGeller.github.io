@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>One Gift To One Heart</title>
+  <link rel="shortcut  icon" type="image/x-icon" href="heart.ico" media="screen"  />
+  <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
+  <style type="text/css">
+    * {
+      margin: 0px;
+      padding: 0px;
+
+    }
+
+    html, body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mainContainer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f0f0;
+    }
+
+    .stage01, .stage02, .stage03 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      left: 50%;
+      top: 30%;
+      margin-left: -50px;
+      margin-top: -50px;
+      background: #f00;
+      transform: rotate(45deg);
+      display: none;
+    }
+
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: #f00;
+      border-radius: 50px;
+    }
+
+    .heart:before {
+      left: -50px;
+    }
+
+    .heart:after {
+      left: 0;
+      top: -50px;
+    }
+
+    .stage01 .star {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      left: 50%;
+      top: 25%;
+      margin-left: -110px;
+      margin-top: -100px;
+      background-image: url("./img/star.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    .text {
+      position: relative;
+      width: 300px;
+      height: 30px;
+      margin: auto;
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: 30px;
+      vertical-align: middle;
+      color: #7c7c7c;
+      display: none;
+    }
+
+    .text span {
+      font-size: 20px;
+    }
+
+    .stage01 .text span {
+      color: #FFC100;
+    }
+
+    .stage02 .text span {
+      color: #bf0f0f;
+    }
+
+    .logo {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      left: 50%;
+      bottom: 10px;
+      margin-left: -20px;
+      background-image: url(./img/dog.png);
+      background-size: 100% 100%;
+      animation-delay: 2s;
+    }
+
+    .roleStage01 {
+      position: relative;
+      top: 120px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      display: none;
+    }
+
+    .roleStage01 .role {
+      display: inline-block;
+      font-size: 18px;
+    }
+
+    .roleStage01 .role02 {
+      color: #0F32D7;
+      font-size: 22px;
+    }
+
+    .roleStage01 .role03, .roleStage01  .role04, .roleStage01  .role05 {
+      display: none;
+    }
+
+    .roleStage02 {
+      position: relative;
+      top: 180px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .roleStage02 .role {
+      font-size: 20px;
+      text-align: center;
+      display: none;
+      margin-bottom: 20px;
+      color: #7c7c7c;
+    }
+
+    .roleStage02 .role span {
+      font-size: 24px;
+      color: #bf0f0f;
+    }
+
+    .roleStage03 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: none;
+    }
+
+    .roleStage03 .role {
+      font-size: 18px;
+      text-align: center;
+      display: none;
+    }
+
+    .roleStage03 .role01 {
+      position: absolute;
+      width: 350px;
+      height: 250px;
+      background-image: url("./img/happyBirthday.jpeg");
+      background-size: 100% 100%;
+      left: 50%;
+      top: 20px;
+      margin-left: -175px;
+    }
+
+    .roleStage03 .role02 {
+      position: absolute;
+      width: 210px;
+      height: 150px;
+      text-align: center;
+      left: 50%;
+      top: 60%;
+      margin-left: -105px;
+      font-size: 24px;
+      font-family: "Comic Sans MS";
+      color: #4a4a4a;
+    }
+
+ @-webkit-keyframes heartbeatIn { 0% { -webkit-transform: rotate(45deg) scale(0.8, 0.8); transform: rotate(45deg) scale(0.8,
+0.8); opacity: 1; } 25% { -webkit-transform: rotate(45deg) scale(1, 1); transform: rotate(45deg) scale(1, 1); opacity: 0.8;
+} 100% { -webkit-transform: rotate(45deg) scale(0.8, 0.8); transform: rotate(45deg) scale(0.8, 0.8); opacity: 1; } } @keyframes
+heartbeatIn { 0% { -webkit-transform: rotate(45deg) scale(0.8, 0.8); transform: rotate(45deg) scale(0.8, 0.8); opacity: 1;
+} 25% { -webkit-transform: rotate(45deg) scale(1, 1); transform: rotate(45deg) scale(1, 1); opacity: 0.8; } 100% { -webkit-transform:
+rotate(45deg) scale(0.8, 0.8); transform: rotate(45deg) scale(0.8, 0.8); opacity: 1; } }
+  </style>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var $mainContainer = $(".mainContainer");
+      var $textContainer = $(".textContainer");
+      var $heart = $(".heart");
+      var $star = $(".star");
+      var $stage01Text = $(".stage01 .text");
+      var $stage02Text = $(".stage02 .text");
+      var $logo = $(".logo");
+
+      function startAnimation(animationName, speed, delay, type) {
+        $heart.css("-webkit-animation", animationName + " " + speed + " " + delay + " " + type);
+        $heart.css("animation", animationName + " " + speed + " " + delay + " " + type);
+      }
+
+      var randomInt, temp;
+      function getRandom(n) {
+        randomInt = Math.floor(Math.random()*n+1);
+        if(randomInt != temp && randomInt != undefined) {
+          temp = randomInt;
+          return randomInt;
+        } else {
+          temp = randomInt;
+          return randomInt + 1;
+        }
+      }
+
+      //Stage 01
+      $star.fadeIn(800);
+      $stage01Text.eq(0).delay(300).fadeIn(800).css({"font-size":"22px", "top":"50%"});
+      $star.delay(1500).animate({top: "-200"}, 800);
+      $stage01Text.eq(0).delay(1500).animate({top: 40}, 600, function() {
+        $stage01Text.eq(1).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+          $stage01Text.eq(2).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+            $stage01Text.eq(3).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+              $stage01Text.eq(4).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+                $stage01Text.eq(5).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+                  $stage01Text.eq(6).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+                    $stage01Text.eq(7).css({"font-size":"14px","top":"60px"}).fadeIn(800, function() {
+                      $logo.addClass("animated tada infinite");
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+      $logo.bind("click", function() {
+        $logo.removeClass("animated tada infinite");
+        $stage01Text.fadeOut(800).remove();
+        $logo.unbind();
+        stage02();
+      })
+      //Stage 02
+      function stage02() {
+        $heart.fadeIn(800);
+        $stage02Text.eq(0).css({"font-size":"18px","top":"50%"}).fadeIn(800, function() {
+          setTimeout(function() {
+            $heart.css("filter", "drop-shadow(0px 0px 20px rgb(255, 20, 20))");
+          }, 2000);
+          startAnimation("heartbeatIn", "1s", "2s", "infinite");
+          setTimeout(function() {
+            $heart.css("animation-play-state", "paused");
+            $heart.delay(400).fadeOut(800, function() {
+              $heart.remove();
+              $("<div class='heart'></div>").appendTo($(".stage02"));
+              $heart = $(".heart");
+              $heart.css({
+                "width": "30px",
+                "height": "30px",
+                "margin-left": "-15px",
+                "margin-top": "-15px",
+                "top": "40px"
+              });
+              $heart.append("<style>.heart:before,.heart:after{width:30px;height:30px;border-radius:15px;}.heart:before{left:-15px;}.heart:after{top:-15px;}</style>");
+              $heart.delay(400).fadeIn(800);
+            })
+            $stage02Text.eq(0).delay(1200).animate({ top: 80, fontSize: 14}, 600, function () {
+              $stage02Text.eq(1).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                $stage02Text.eq(2).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                  $stage02Text.eq(3).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                    $stage02Text.eq(4).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                      $stage02Text.eq(5).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                        $stage02Text.eq(6).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                          $stage02Text.eq(7).css({ "font-size": "14px", "top": "80px" }).fadeIn(800, function () {
+                            $logo.addClass("animated tada infinite");
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          }, 6800);
+        });
+        $logo.bind("click", function () {
+          $logo.removeClass("animated tada infinite");
+          $stage02Text.fadeOut(800).remove();
+          $(".heart").fadeOut(800).remove();
+          $logo.unbind();
+          stage03();
+        });
+      }
+      //stage03
+      function stage03() {
+        $(".roleStage01").delay(500).fadeIn(800, function () {
+          $(".roleStage01 .role03").css({ "display": "inline-block", "optacity": "0" }).fadeTo(300, 1, function () {
+            $(".roleStage01 .role04").css({ "display": "inline-block", "optacity": "0" }).fadeTo(300, 1, function () {
+              $(".roleStage01 .role05").css({ "display": "inline-block", "optacity": "0" }).fadeTo(300, 1, function () {
+                $('.roleStage01 .role01, .roleStage01 .role04, .roleStage01 .role05').fadeOut(800);
+                $('.roleStage01 .role03').fadeTo(300, 0);
+                $('.roleStage01').animate({top:160}, 600);
+                $(".roleStage01 .role02").animate({fontSize: 24}, 600, function() {
+                  $('.roleStage01 .role03').css("font-size", "24px");
+                  var textArray = ["可爱", "美丽", "善良", "勇敢", "纯真", "女神", "优雅", "执着", "坚强", "聪慧", "努力"];
+                  var randomInt;
+                  var count = 0;
+                  var int = setInterval(function() {
+                    count += 1;
+                    if(count==15) {
+                      console.log("ok");
+                      clearInterval(int);
+                      $(".roleStage01").fadeOut(800, function() {
+                        $(".roleStage02 .role01").delay(600).fadeIn(800, function() {
+                          $(".roleStage02 .role02").delay(600).fadeIn(800, function() {
+                            $('.roleStage02').delay(1000).fadeOut(800, function() {
+                              $('.roleStage03').fadeIn(800, function() {
+                                $('.roleStage03 .role01').fadeIn(800, function () {
+                                  $('.roleStage03 .role02').delay(400).fadeIn(800);
+                                })
+                              });
+                            });
+                          });
+                        });
+                      })
+                    }
+                    randomInt = getRandom(10);
+                    if (randomInt != undefined) {
+                      $(".roleStage01 .role03").html(textArray[randomInt]).fadeTo(100, 0, function () {
+                        $(this).fadeTo(100, 1);
+                      })
+                    }
+                  }, 200);
+                });
+              });
+            });
+          });
+        })
+      }
+    })
+  </script>
+</head>
+
+<body>
+  <div class="mainContainer">
+    <div class="stage01">
+      <div class="star"></div>
+      <div class="text">One Gift To One Heart</div>
+      <div class="text">世上有<span>一只</span>美丽的小星星</div>
+      <div class="text">璀璨又夺目</div>
+      <div class="text">在夜空中闪耀群星</div>
+      <div class="text">有时如太阳般火热</div>
+      <div class="text">有时像月亮般纯洁</div>
+      <div class="text">往来之间皆优雅</div>
+      <div class="text">...</div>
+    </div>
+    <div class="stage02">
+      <div class="heart"></div>
+      <div class="text">世上有<span>一只</span>善良的小心心</div>
+      <div class="text">勇敢又热情</div>
+      <div class="text">在朋友间洋溢活力</div>
+      <div class="text">在家人间温暖心灵</div>
+      <div class="text">酷的时候像寡姐般果敢</div>
+      <div class="text">可爱的时候幼儿园都无人能及</div>
+      <div class="text">来去之间皆清新</div>
+      <div class="text">...</div>
+    </div>
+    <div class="stage03">
+      <div class="roleStage01">
+        <div class="role role01">世界上有</div>
+        <div class="role role02">一只</div>
+        <div class="role role03">.</div>
+        <div class="role role04">.</div>
+        <div class="role role05">.</div>
+      </div>
+      <div class="roleStage02">
+        <div class="role role01">世上有位名叫<span>一只</span>的小朋友</div>
+        <div class="role role02">今天是她的生日</div>
+      </div>
+      <div class="roleStage03">
+        <div class="role role01"></div>
+        <div class="role role02">Happy Birthday</div>
+      </div>
+    </div>
+    <div class="logo"></div>
+  </div>
+</body>
+
+</html>
